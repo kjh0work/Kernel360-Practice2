@@ -1,17 +1,40 @@
 package com.fastcampus.kernel_practice2.controller;
 
 import com.fastcampus.kernel_practice2.model.BookQueryParam;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@Slf4j
 @RestController
 @RequestMapping("/api")
 public class RestApiController {
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello Spring Boot";
+    @GetMapping(path = "")
+    public void hello(){
+        var list = List.of("hello", "world");
+        var element = list.get(2);
+
+        log.info("element = {}", element);
     }
+
+
+
+
+
+
+
+
+
+    /**
+     * ch02까지의 내용
+     */
+//    @GetMapping("/hello")
+//    public String hello() {
+//        return "Hello Spring Boot";
+//    }
 
     @GetMapping(path = "/echo/{message}/age/{age}/is-man/{isMan}")
     public String echo(@PathVariable(name = "message") String msg,
